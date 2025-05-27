@@ -1,7 +1,7 @@
-## Projeto Sistema de Atividades Especiais - GRUPO A
+## Projeto Sistema de Assinatura de Academia - GRUPO C
 
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema XYZ.
-O projeto foi desenvolvido em C# .NET, criando um CRUD para cadastro dos itens xyz, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada entity framework e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
+O projeto foi desenvolvido em PHP, criando um CRUD para cadastro dos itens xyz, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada entity framework e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
 
 ### Integrantes
 Jorge Luiz da Silva - jlsilva01<br>
