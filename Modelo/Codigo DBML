@@ -1,4 +1,4 @@
-Table Usuários {
+Table Usuarios {
   cd_usuario int [pk, increment]
   nome varchar (80)
   senha VARBINARY(64)
@@ -14,7 +14,7 @@ Table Clientes {
   cd_cliente int [pk, increment]
   nome varchar (80)
   cpf varchar (11) [unique]
-  email varchar (80)
+  email varchar (80) 
   telefone varchar (11)
   data_nascimento date
   endereco varchar(max)
@@ -23,9 +23,10 @@ Table Clientes {
 
 Table Funcionarios {
   cd_funcionario int [pk, increment]
+  cd_usuario int [ref: - Usuarios.cd_usuario]
   nome varchar (80)
   cpf varchar (11) [unique]
-  email varchar (80)
+  email varchar (80) [unique]
   telefone varchar (11)
   cargo varchar (90)
   dt_admissao date
@@ -36,7 +37,7 @@ Table afastamentos {
 cd_afastamento int [pk, increment]
 cd_funcionario int [ref: > Funcionarios.cd_funcionario]
 dt_afastamento date
-dt_retorno date
+dt_retorno date [null]
 tipo_afa desc.afastamento
 descrição_afa varchar(max)
 }
@@ -44,6 +45,10 @@ enum desc.afastamento {
   "FERIAS"
   "ATESTADO MÉDICO"
   "LICENÇA"  
+  "Afastamento por Doença ou Acidente"
+  "Licenças Legais (previstas na CLT)"
+  "Licenças Acordadas (por negociação com a empresa)"
+  "Afastamento por Invalidez"
 }
 
 Table Planos {
@@ -51,7 +56,6 @@ Table Planos {
   nome varchar (80)
   descricao varchar(max)
   preco decimal (99,2)
-  duracao_meses int
   tipo desc.tipo_p
 }
 enum tipo_p{
@@ -62,8 +66,10 @@ enum tipo_p{
 
 Table Contratos {
   cd_contrato int [pk, increment]
+  cd_funcionario int [ref: - Funcionarios.cd_funcionario]
   cd_cliente int [ref: > Clientes.cd_cliente]
   cd_plano int [ref: > Planos.cd_plano]
+
   data_inicio date
   data_fim date [null]
   status desc.status
@@ -80,7 +86,7 @@ Table Aulas {
   descricao varchar(max)
   horario datetime
   instrutor_id int [ref: > Funcionarios.cd_funcionario]
-  capacidade int
+  capacidade int [null]
 }
 
 Table Controle_Acessos {
@@ -93,9 +99,8 @@ Table Controle_Acessos {
 Table Pagamentos {
   cd_pagamento int [pk, increment]
   cd_contrato int [ref: > Contratos.cd_contrato]
-  valor_pago decimal (99,2)
+  valor_pago decimal (99,2) //perguntar sobre
   metodo_pag desc.pagamento
-  status desc.status
 }
 Enum pagamento {
  "DINHEIRO"
