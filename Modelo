@@ -1,0 +1,105 @@
+Table Usuários {
+  cd_usuario int [pk, increment]
+  nome varchar (80)
+  senha VARBINARY(64)
+  email varchar (80) [unique]
+  tipo desc.tipo_user
+}
+Enum tipo_user {
+  "ADMINISTRADOR"
+  "PADRAO"
+}
+
+Table Clientes {
+  cd_cliente int [pk, increment]
+  nome varchar (80)
+  cpf varchar (11) [unique]
+  email varchar (80)
+  telefone varchar (11)
+  data_nascimento date
+  endereco varchar(max)
+  dt_cadastro datetime
+}
+
+Table Funcionarios {
+  cd_funcionario int [pk, increment]
+  nome varchar (80)
+  cpf varchar (11) [unique]
+  email varchar (80)
+  telefone varchar (11)
+  cargo varchar (90)
+  dt_admissao date
+  dt_demissao date [null]
+}
+
+Table afastamentos {
+cd_afastamento int [pk, increment]
+cd_funcionario int [ref: > Funcionarios.cd_funcionario]
+dt_afastamento date
+dt_retorno date
+tipo_afa desc.afastamento
+descrição_afa varchar(max)
+}
+enum desc.afastamento {
+  "FERIAS"
+  "ATESTADO MÉDICO"
+  "LICENÇA"  
+}
+
+Table Planos {
+  cd_plano int [pk, increment]
+  nome varchar (80)
+  descricao varchar(max)
+  preco decimal (99,2)
+  duracao_meses int
+  tipo desc.tipo_p
+}
+enum tipo_p{
+  "BLACK"
+  "GOLD"
+  "STANDART"  
+}
+
+Table Contratos {
+  cd_contrato int [pk, increment]
+  cd_cliente int [ref: > Clientes.cd_cliente]
+  cd_plano int [ref: > Planos.cd_plano]
+  data_inicio date
+  data_fim date [null]
+  status desc.status
+}
+enum status{
+  "ATIVO"
+  "INATIVO"
+  "PENDENTE"
+}
+
+Table Aulas {
+  cd_aula int [pk, increment]
+  nome varchar
+  descricao varchar(max)
+  horario datetime
+  instrutor_id int [ref: > Funcionarios.cd_funcionario]
+  capacidade int
+}
+
+Table Controle_Acessos {
+  cd_acesso int [pk, increment]
+  cd_cliente int [ref: > Clientes.cd_cliente]
+  dt_entrada datetime
+  dt_saida datetime [null]
+}
+
+Table Pagamentos {
+  cd_pagamento int [pk, increment]
+  cd_contrato int [ref: > Contratos.cd_contrato]
+  valor_pago decimal (99,2)
+  metodo_pag desc.pagamento
+  status desc.status
+}
+Enum pagamento {
+ "DINHEIRO"
+ "PIX"
+ "CREDITO"
+ "DEBITO"
+}
