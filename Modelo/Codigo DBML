@@ -1,11 +1,11 @@
 Table Usuarios {
   cd_usuario int [pk, increment]
   nome varchar (80)
-  senha VARBINARY(64)
+  senha VARBINARY(64) [not null]
   email varchar (80) [unique]
   tipo desc.tipo_user
 }
-Enum tipo_user {
+Enum desc.tipo_user {
   "ADMINISTRADOR"
   "PADRAO"
 }
@@ -13,7 +13,7 @@ Enum tipo_user {
 Table Clientes {
   cd_cliente int [pk, increment]
   nome varchar (80)
-  cpf varchar (11) [unique]
+  cpf varchar (11) [unique, not null]
   email varchar (80) 
   telefone varchar (11)
   data_nascimento date
@@ -55,10 +55,10 @@ Table Planos {
   cd_plano int [pk, increment]
   nome varchar (80)
   descricao varchar(max)
-  preco decimal (99,2)
+  preco decimal (32,2)
   tipo desc.tipo_p
 }
-enum tipo_p{
+enum desc.tipo_p{
   "BLACK"
   "GOLD"
   "STANDART"  
@@ -74,7 +74,7 @@ Table Contratos {
   data_fim date [null]
   status desc.status
 }
-enum status{
+enum desc.status{
   "ATIVO"
   "INATIVO"
   "PENDENTE"
@@ -99,10 +99,10 @@ Table Controle_Acessos {
 Table Pagamentos {
   cd_pagamento int [pk, increment]
   cd_contrato int [ref: > Contratos.cd_contrato]
-  valor_pago decimal (99,2) //perguntar sobre
+  valor_pago decimal (32,2) //perguntar sobre
   metodo_pag desc.pagamento
 }
-Enum pagamento {
+Enum desc.pagamento {
  "DINHEIRO"
  "PIX"
  "CREDITO"
