@@ -1,67 +1,39 @@
-Table Usuarios {
-  cd_usuario int [pk, increment]
-  nome varchar (80)
-  senha VARBINARY(64) [not null]
-  email varchar (80) [unique]
-  tipo desc.tipo_user
-}
-Enum desc.tipo_user {
-  "ADMINISTRADOR"
-  "PADRAO"
-}
-
 Table Clientes {
   cd_cliente int [pk, increment]
-  nome varchar (80)
+  nm_cliente varchar (80)
   cpf varchar (11) [unique, not null]
   email varchar (80) 
   telefone varchar (11)
-  data_nascimento date
+  dt_nascimento date
   endereco varchar(max)
   dt_cadastro datetime
 }
 
 Table Funcionarios {
   cd_funcionario int [pk, increment]
-  cd_usuario int [ref: - Usuarios.cd_usuario]
-  nome varchar (80)
+  nm_funcionario varchar (80)
   cpf varchar (11) [unique]
   email varchar (80) [unique]
   telefone varchar (11)
-  cargo varchar (90)
+  cd_cargo int
+  nm_cargo varchar (90)
   dt_admissao date
   dt_demissao date [null]
-}
-
-Table afastamentos {
-cd_afastamento int [pk, increment]
-cd_funcionario int [ref: > Funcionarios.cd_funcionario]
-dt_afastamento date
-dt_retorno date [null]
-tipo_afa desc.afastamento
-descrição_afa varchar(max)
-}
-enum desc.afastamento {
-  "FERIAS"
-  "ATESTADO MÉDICO"
-  "LICENÇA"  
-  "Afastamento por Doença ou Acidente"
-  "Licenças Legais (previstas na CLT)"
-  "Licenças Acordadas (por negociação com a empresa)"
-  "Afastamento por Invalidez"
+  dt_afastamento date [null]
+  dt_retorno date [null]
 }
 
 Table Planos {
   cd_plano int [pk, increment]
-  nome varchar (80)
+  nm_plano varchar (80)
   descricao varchar(max)
-  preco decimal (32,2)
-  tipo desc.tipo_p
+  vl_preco decimal (32,2)
+  tp_plano desc.tipo_p
 }
 enum desc.tipo_p{
   "BLACK"
   "GOLD"
-  "STANDART"  
+  "STANDART"
 }
 
 Table Contratos {
@@ -70,8 +42,8 @@ Table Contratos {
   cd_cliente int [ref: > Clientes.cd_cliente]
   cd_plano int [ref: > Planos.cd_plano]
 
-  data_inicio date
-  data_fim date [null]
+  dt_inicio date
+  dt_fim date [null]
   status desc.status
 }
 enum desc.status{
@@ -82,10 +54,11 @@ enum desc.status{
 
 Table Aulas {
   cd_aula int [pk, increment]
-  nome varchar
+  nm_aula varchar
   descricao varchar(max)
-  horario datetime
-  instrutor_id int [ref: > Funcionarios.cd_funcionario]
+  dt_inicio datetime
+  dt_fim datetime
+  cd_instrutor int [ref: > Funcionarios.cd_funcionario]
   capacidade int [null]
 }
 
@@ -99,7 +72,7 @@ Table Controle_Acessos {
 Table Pagamentos {
   cd_pagamento int [pk, increment]
   cd_contrato int [ref: > Contratos.cd_contrato]
-  valor_pago decimal (32,2) //perguntar sobre
+  valor_pago decimal (32,2) 
   metodo_pag desc.pagamento
 }
 Enum desc.pagamento {
@@ -107,4 +80,25 @@ Enum desc.pagamento {
  "PIX"
  "CREDITO"
  "DEBITO"
+}
+
+Table Agendas {
+  cd_agenda int [pk, increment]
+  cd_aula int [ref: > Aulas.cd_aula]
+  nm_aula varchar(30)
+  cd_aluno int [ref: > Clientes.cd_cliente]
+  cd_instrutor int [ref: > Aulas.cd_instrutor]
+  dias_semana desc.dia_semana 
+
+
+}
+
+Enum desc.dia_semana {
+ "SEGUNDA"
+ "TERÇA"
+ "QUARTA"
+ "QUINTA"
+ "SEXTA"
+ "SABADO"
+ "DOMINGO"
 }
