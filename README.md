@@ -5,10 +5,10 @@ O projeto foi desenvolvido em PHP, criando um CRUD para cadastro dos itens xyz, 
 
 ### Integrantes
 Fernando Fernandes Farias - <a href="https://github.com/FernandoFernandesFarias">FernandoFernandesFarias</a><br>
-Gabriel Fillipe Casagrande Fernandes - Bielfer12<br>
-Guilherme Rabello Carrer - GuilhermeCarrer<br>
-Luis Filipe Damiani Colombo - luisfilipedm<br>
-Thiago de Moliner Colombo - Thiago-moliner<br>
+Gabriel Fillipe Casagrande Fernandes - <a href="https://github.com/Bielfer12">Bielfer12</a><br>
+Guilherme Rabello Carrer - <a href="https://github.com/GuilhermeCarrer">GuilhermeCarrer</a><br>
+Luis Filipe Damiani Colombo - <a href="https://github.com/luisfilipedm">luisfilipedm</a><br>
+Thiago de Moliner Colombo - <a href="https://github.com/Thiago-moliner">Thiago-moliner</a><br>
 
 
 ### Modelo Físico
