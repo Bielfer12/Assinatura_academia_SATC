@@ -1,10 +1,10 @@
-## Projeto Sistema de Assinatura de Acãdemia - GRUPO C
+## Projeto Sistema de Assinatura de Academia - GRUPO C
 
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema de assinatura de acâdemia.
 O projeto foi desenvolvido em PHP, criando um CRUD para cadastro dos itens xyz, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada entity framework e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
 
 ### Integrantes
-Fernando Fernandes Farias - FernandoFernadesFarias<br>
+Fernando Fernandes Farias - <a href="https://github.com/FernandoFernandesFarias">FernandoFernandesFarias</a><br>
 Gabriel Fillipe Casagrande Fernandes - Bielfer12<br>
 Guilherme Rabello Carrer - GuilhermeCarrer<br>
 Luis Filipe Damiani Colombo - luisfilipedm<br>
