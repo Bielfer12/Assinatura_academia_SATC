@@ -1,4 +1,4 @@
-Table Clientes {
+Table Clientes  {
   cd_cliente int [pk, increment]
   nm_cliente varchar (80)
   cpf varchar (11) [unique, not null]
@@ -87,7 +87,6 @@ Table Agendas {
   cd_aula int [ref: > Aulas.cd_aula]
   nm_aula varchar(30)
   cd_aluno int [ref: > Clientes.cd_cliente]
-  cd_instrutor int [ref: > Aulas.cd_instrutor]
   dias_semana desc.dia_semana 
 
 
