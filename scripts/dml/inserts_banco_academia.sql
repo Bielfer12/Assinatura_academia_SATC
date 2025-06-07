@@ -73,3 +73,18 @@ VALUES
 (5, 9, 8, '2023-09-15', '2023-12-15', 'PENDENTE'),
 (6, 10, 9, '2023-09-20', '2024-03-20', 'PENDENTE');
 
+
+
+-- Tabela Agendas
+INSERT INTO Agendas (cd_aula, nm_aula, cd_aluno, cd_instrutor, dias_semana)
+VALUES
+(2, 'CrossFit', 1, 3, 'SEGUNDA'),
+(2, 'CrossFit', 1, 3, 'QUARTA'),
+(3, 'Zumba', 2, 4, 'TERÇA'),
+(3, 'Zumba', 2, 4, 'QUINTA'),
+(4, 'Pilates', 3, 4, 'SEGUNDA'),
+(4, 'Pilates', 3, 4, 'QUARTA'),
+(5, 'Spinning', 4, 3, 'SEXTA'),
+(6, 'Boxe', 1, 2, 'TERÇA'),
+(6, 'Boxe', 3, 2, 'QUINTA'),
+(7, 'Yoga', 4, 4, 'SABADO');
