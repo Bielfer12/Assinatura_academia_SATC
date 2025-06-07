@@ -88,3 +88,14 @@ VALUES
 (6, 'Boxe', 1, 2, 'TERÇA'),
 (6, 'Boxe', 3, 2, 'QUINTA'),
 (7, 'Yoga', 4, 4, 'SABADO');
+
+
+-- Tabela Pagamentos
+INSERT INTO Pagamentos (cd_contrato, valor_pago, metodo_pag)
+VALUES
+(1, 199.90, 'CREDITO'),
+(2, 99.90, 'DEBITO'),
+(3, 299.90, 'PIX'),
+(4, 149.90, 'CREDITO'),
+(5, 199.90, 'DEBITO'),
+(6, 79.90, 'PIX');
