@@ -26,3 +26,18 @@ VALUES
 ('Isabela Fontoura Lima', '89012345678', 'isabela.lima@academia.com', '48998901234', 5, 'Fisioterapeuta', '2023-03-30'),
 ('Gustavo Henrique Peixoto', '90123456789', 'gustavo.peixoto@academia.com', '48999012345', 6, 'Personal Trainer', '2023-05-15'),
 ('Ana Carolina Ribeiro', '01234567890', 'ana.ribeiro@academia.com', '48990123456', 6, 'Personal Trainer', '2023-07-20');
+
+
+-- Tabela Planos
+INSERT INTO Planos (nm_plano, descricao, vl_preco, tp_plano)
+VALUES
+('Plano Básico', 'Acesso à academia em horário comercial', 99.90, 'STANDARD'),
+('Plano Plus', 'Acesso ilimitado + 2 aulas semanais', 149.90, 'STANDARD'),
+('Plano Gold', 'Acesso ilimitado + 5 aulas semanais + avaliação física', 199.90, 'GOLD'),
+('Plano Black', 'Acesso 24h + aulas ilimitadas + personal trainer', 299.90, 'BLACK'),
+('Plano Estudante', 'Acesso em horário comercial com desconto', 79.90, 'STANDARD'),
+('Plano Casal', 'Dois planos básicos com desconto', 169.90, 'STANDARD'),
+('Plano Família', 'Três planos básicos com desconto', 239.90, 'STANDARD'),
+('Plano Sênior', 'Para maiores de 60 anos', 89.90, 'STANDARD'),
+('Plano Corporativo', 'Para empresas com 5+ funcionários', 89.90, 'STANDARD'),
+('Plano VIP', 'Todos os benefícios + estacionamento', 349.90, 'BLACK');
