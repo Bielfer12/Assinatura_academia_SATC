@@ -41,3 +41,20 @@ VALUES
 ('Plano Sênior', 'Para maiores de 60 anos', 89.90, 'STANDARD'),
 ('Plano Corporativo', 'Para empresas com 5+ funcionários', 89.90, 'STANDARD'),
 ('Plano VIP', 'Todos os benefícios + estacionamento', 349.90, 'BLACK');
+
+
+
+-- Tabela Aulas 
+INSERT INTO Aulas (nm_aula, descricao, dt_inicio, dt_fim, cd_instrutor, capacidade)
+VALUES
+('Musculação', 'Treino de força e resistência muscular', '20230801 07:00:00', '20231231 22:00:00', 2, 20),
+('CrossFit', 'Treino funcional de alta intensidade', '20230801 08:00:00', '20231231 20:00:00', 3, 15),
+('Zumba', 'Aula de dança e exercícios aeróbicos', '20230801 09:00:00', '20231231 19:00:00', 4, 25),
+('Pilates', 'Exercícios de alongamento e fortalecimento', '20230801 10:00:00', '20231231 18:00:00', 4, 10),
+('Spinning', 'Aula de ciclismo indoor', '20230801 17:00:00', '20231231 21:00:00', 3, 15),
+('Boxe', 'Treino de boxe e condicionamento físico', '20230801 18:00:00', '20231231 21:00:00', 2, 12),
+('Yoga', 'Prática de posturas e meditação', '20230801 07:00:00', '20231231 09:00:00', 4, 15),
+('Funcional', 'Exercícios que simulam movimentos do dia a dia', '20230801 12:00:00', '20231231 13:00:00', 3, 20),
+('HIIT', 'Treino intervalado de alta intensidade', '20230801 19:00:00', '20231231 20:00:00', 2, 15),
+('Alongamento', 'Exercícios para flexibilidade e relaxamento', '20230801 20:00:00', '20231231 21:00:00', 4, 20);
+
