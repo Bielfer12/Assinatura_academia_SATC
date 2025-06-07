@@ -11,3 +11,18 @@ VALUES
 ('Thiago de Moliner Colombo', '88899900011', 'thiago.colombo@email.com', '48989012345', '20040425', 'Av. Getúlio Vargas, 505, Criciúma/SC', '20230810'),
 ('Kauan Custodio Propodoski', '99900011122', 'kauan.propodoski@email.com', '48990123456', '20030610', 'Rua Coronel Pedro Benedet, 606, Criciúma/SC', '20230815'),
 ('Leonardo da Silva Joaquim', '00011122233', 'leonardo.joaquim@email.com', '48901234567', '20040105', 'Rua Felipe Schmidt, 707, Criciúma/SC', '20230820');
+
+
+-- Tabela Funcionarios
+INSERT INTO Funcionarios (nm_funcionario, cpf, email, telefone, cd_cargo, nm_cargo, dt_admissao)
+VALUES
+('Marcos Aurélio Santana', '12345678901', 'marcos.santana@academia.com', '48991234567', 1, 'Gerente', '2022-01-15'),
+('Patrícia Oliveira Machado', '23456789012', 'patricia.machado@academia.com', '48992345678', 2, 'Instrutor Chefe', '2022-03-10'),
+('Rafael Torres de Souza', '34567890123', 'rafael.souza@academia.com', '48993456789', 3, 'Instrutor', '2022-05-20'),
+('Juliana Costa e Silva', '45678901234', 'juliana.silva@academia.com', '48994567890', 3, 'Instrutor', '2022-07-05'),
+('Luciano Pires Montenegro', '56789012345', 'luciano.montenegro@academia.com', '48995678901', 4, 'Recepcionista', '2022-09-12'),
+('Camila Duarte Alencar', '67890123456', 'camila.alencar@academia.com', '48996789012', 4, 'Recepcionista', '2022-11-18'),
+('Vitor Hugo Barreto', '78901234567', 'vitor.barreto@academia.com', '48997890123', 5, 'Nutricionista', '2023-01-22'),
+('Isabela Fontoura Lima', '89012345678', 'isabela.lima@academia.com', '48998901234', 5, 'Fisioterapeuta', '2023-03-30'),
+('Gustavo Henrique Peixoto', '90123456789', 'gustavo.peixoto@academia.com', '48999012345', 6, 'Personal Trainer', '2023-05-15'),
+('Ana Carolina Ribeiro', '01234567890', 'ana.ribeiro@academia.com', '48990123456', 6, 'Personal Trainer', '2023-07-20');
