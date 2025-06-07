@@ -58,3 +58,18 @@ VALUES
 ('HIIT', 'Treino intervalado de alta intensidade', '20230801 19:00:00', '20231231 20:00:00', 2, 15),
 ('Alongamento', 'Exercícios para flexibilidade e relaxamento', '20230801 20:00:00', '20231231 21:00:00', 4, 20);
 
+
+-- Tabela Contratos
+INSERT INTO Contratos (cd_funcionario, cd_cliente, cd_plano, dt_inicio, dt_fim, status)
+VALUES
+(5, 1, 3, '2023-08-01', '2024-08-01', 'ATIVO'),
+(6, 2, 1, '2023-08-05', '2023-11-05', 'ATIVO'),
+(5, 3, 4, '2023-08-10', '2024-02-10', 'ATIVO'),
+(6, 4, 2, '2023-08-15', '2023-11-15', 'ATIVO'),
+(5, 5, 3, '2023-07-20', '2023-08-20', 'INATIVO'),
+(6, 6, 5, '2023-08-01', '2023-09-01', 'INATIVO'),
+(5, 7, 6, '2023-09-05', '2024-03-05', 'PENDENTE'),
+(6, 8, 7, '2023-09-10', '2024-03-10', 'PENDENTE'),
+(5, 9, 8, '2023-09-15', '2023-12-15', 'PENDENTE'),
+(6, 10, 9, '2023-09-20', '2024-03-20', 'PENDENTE');
+
