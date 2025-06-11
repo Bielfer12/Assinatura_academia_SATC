@@ -1,7 +1,9 @@
 <?php
 // Inclui o arquivo de conexão para poder buscar os dados
+
 // CÓDIGO NOVO E CORRIGIDO
 include '../../DB/conexao.php';
+
 // Query para selecionar todos os clientes, ordenados por nome
 $sql = "SELECT cd_cliente, nm_cliente, cpf, email, telefone, dt_nascimento, endereco FROM Clientes ORDER BY nm_cliente ASC";
 $stmt = sqlsrv_query($conn, $sql);
@@ -197,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('acao', acao);
 
         fetch('../../api_clientes.php', {
+
             method: 'POST',
             body: formData
         })
@@ -229,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('cd_cliente', id);
 
                 fetch('../../api_clientes.php', {
+
                     method: 'POST',
                     body: formData
                 })
