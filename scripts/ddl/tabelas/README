@@ -1,0 +1,7 @@
+ANTES DE EXECUTAR OS COMANDOS DDL È NECESSARIO CRIAR UM BANCO
+
+----------------------------------------
+Create database exemplo
+
+
+---apos isso abra uma nova query no vanco criado e coloque os comandos DDL

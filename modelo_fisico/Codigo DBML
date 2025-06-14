@@ -3,7 +3,7 @@ Table Clientes  {
   nm_cliente varchar (80)
   cpf varchar (11) [unique, not null]
   email varchar (80) 
-  telefone varchar (11)
+  telefone varchar (15)
   dt_nascimento date
   endereco varchar(max)
   dt_cadastro datetime
@@ -14,7 +14,7 @@ Table Funcionarios {
   nm_funcionario varchar (80)
   cpf varchar (11) [unique]
   email varchar (80) [unique]
-  telefone varchar (11)
+  telefone varchar (15)
   cd_cargo int
   nm_cargo varchar (90)
   dt_admissao date
@@ -73,6 +73,7 @@ Table Pagamentos {
   cd_pagamento int [pk, increment]
   cd_contrato int [ref: > Contratos.cd_contrato]
   valor_pago decimal (32,2) 
+  dt_pagamento datetime
   metodo_pag desc.pagamento
 }
 Enum desc.pagamento {
