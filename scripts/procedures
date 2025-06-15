@@ -1,1 +1,18 @@
-
+CREATE PROCEDURE ATU_CLIENTES
+AS
+BEGIN
+    MERGE INTO CLIENTES AS cli
+    USING Cad_Clientes AS cad
+    ON cli.cpf = cad.cpf
+    WHEN MATCHED THEN 
+        UPDATE SET 
+            cli.nm_cliente = cad.nm_cliente,
+            cli.email = cad.email,
+            cli.telefone = cad.telefone,
+            cli.dt_nascimento = cad.dt_nascimento,
+            cli.endereco = cad.endereco,
+            cli.dt_cadastro = cad.dt_cadastro
+    WHEN NOT MATCHED THEN
+        INSERT (nm_cliente, cpf, email, telefone, dt_nascimento, endereco, dt_cadastro)
+        VALUES (cad.nm_cliente, cad.cpf, cad.email, cad.telefone, cad.dt_nascimento, cad.endereco, cad.dt_cadastro);
+END;
