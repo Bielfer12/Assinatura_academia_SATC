@@ -76,29 +76,34 @@ VALUES
 
 
 -- Tabela Agendas
-INSERT INTO Agendas (cd_aula, nm_aula, cd_aluno, cd_instrutor, dias_semana)
+INSERT INTO Agendas (cd_aula, nm_aula, cd_aluno,  dias_semana)
 VALUES
-(2, 'CrossFit', 1, 3, 'SEGUNDA'),
-(2, 'CrossFit', 1, 3, 'QUARTA'),
-(3, 'Zumba', 2, 4, 'TERÇA'),
-(3, 'Zumba', 2, 4, 'QUINTA'),
-(4, 'Pilates', 3, 4, 'SEGUNDA'),
-(4, 'Pilates', 3, 4, 'QUARTA'),
-(5, 'Spinning', 4, 3, 'SEXTA'),
-(6, 'Boxe', 1, 2, 'TERÇA'),
-(6, 'Boxe', 3, 2, 'QUINTA'),
-(7, 'Yoga', 4, 4, 'SABADO');
+(2, 'CrossFit', 1, 'SEGUNDA'),
+(2, 'CrossFit', 1, 'QUARTA'),
+(3, 'Zumba', 2, 'TERÇA'),
+(3, 'Zumba', 2,  'QUINTA'),
+(4, 'Pilates', 3, 'SEGUNDA'),
+(4, 'Pilates', 3, 'QUARTA'),
+(5, 'Spinning', 4,  'SEXTA'),
+(6, 'Boxe', 1,  'TERÇA'),
+(6, 'Boxe', 3, 'QUINTA'),
+(7, 'Yoga', 4,  'SABADO');
 
 
 -- Tabela Pagamentos
-INSERT INTO Pagamentos (cd_contrato, valor_pago, metodo_pag)
+INSERT INTO Pagamentos (cd_contrato, valor_pago, metodo_pag, dt_pagamento)
 VALUES
-(1, 199.90, 'CREDITO'),
-(2, 99.90, 'DEBITO'),
-(3, 299.90, 'PIX'),
-(4, 149.90, 'CREDITO'),
-(5, 199.90, 'DEBITO'),
-(6, 79.90, 'PIX');
+(1, 199.90, 'CREDITO', '20230802 08:00:00'),
+(2, 99.90, 'DEBITO', '20230805 09:15:00'),
+(3, 299.90, 'PIX', '20240107 18:23:00'),
+(4, 149.90, 'CREDITO', '20240129 10:57:00'),
+(5, 199.90, 'DEBITO', '20240506 11:17:00'),
+(6, 79.90, 'PIX', '20240915 15:12:00'),
+(7, 79.90, 'PIX', '20241113 13:01:00'),
+(8, 99.90, 'PIX', '20241219 09:15:00'),
+(9, 199.90, 'DEBITO', '20240201 19:15:00'),
+(10, 99.90, 'CREDITO', '20240901 08:37:00');
+
 
 
 -- Tabela Controle_Acessos 
@@ -114,4 +119,3 @@ VALUES
 (4, '20230823 19:00:00', '20230823 21:15:00'),
 (5, '20230801 07:00:00', '20230801 09:30:00'),
 (6, '20230815 16:30:00', '20230815 18:45:00');
-
