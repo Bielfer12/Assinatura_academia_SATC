@@ -1,4 +1,4 @@
-//Quais são os planos que mais geraram faturamento nos últimos 12 meses?
+--Quais são os planos que mais geraram faturamento nos últimos 12 meses?
 
 WITH PagamentosRecentes AS (
     SELECT
