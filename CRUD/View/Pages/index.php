@@ -198,8 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const acao = clientId ? 'atualizar' : 'inserir';
         formData.append('acao', acao);
 
-        fetch('../../api_clientes.php', {
-
+        fetch('../../api_cliente.php', {
             method: 'POST',
             body: formData
         })
@@ -231,8 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('acao', 'excluir');
                 formData.append('cd_cliente', id);
 
-                fetch('../../api_clientes.php', {
-
+                fetch('../../api_cliente.php', {
                     method: 'POST',
                     body: formData
                 })
