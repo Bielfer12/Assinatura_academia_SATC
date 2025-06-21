@@ -76,18 +76,18 @@ CREATE NONCLUSTERED INDEX IX_Contratos_Cliente_Status_Periodo
 ON Contratos (cd_cliente, status, dt_inicio, dt_fim);
 GO
 
-SELECT dbo.fn_ObterNivelAtividadeCliente(1, '2023-08-01', '2023-08-31') AS 'Atividade do Cliente 1 (Agosto/2023)';
+SELECT dbo.fn_ObterNivelAtividadeCliente(1, '2023-08-01', '2023-08-31') AS 'Atividade do cliente 1 (Agosto/2023)';
 
-SELECT dbo.fn_ObterNivelAtividadeCliente(2, '2023-08-01', '2023-08-31') AS 'Atividade do Cliente 2 (Agosto/2023)';
+SELECT dbo.fn_ObterNivelAtividadeCliente(2, '2023-08-01', '2023-08-31') AS 'Atividade do cliente 2 (Agosto/2023)';
 
-SELECT dbo.fn_ObterNivelAtividadeCliente(5, '2023-08-01', '2023-09-30') AS 'Atividade do Cliente 5 (Ago-Set/2023)';
+SELECT dbo.fn_ObterNivelAtividadeCliente(5, '2023-08-01', '2023-09-30') AS 'Atividade do cliente 5 (Ago-Set/2023)';
 
-SELECT dbo.fn_ObterNivelAtividadeCliente(999, '2023-01-01', '2023-12-31') AS 'Atividade do Cliente Inexistente';
+SELECT dbo.fn_ObterNivelAtividadeCliente(999, '2023-01-01', '2023-12-31') AS 'Atividade do cliente inexistente';
 
-SELECT dbo.fn_ObterNivelAtividadeCliente(1, '2023-12-31', '2023-01-01') AS 'Teste de Período Inválido';
+SELECT dbo.fn_ObterNivelAtividadeCliente(1, '2023-12-31', '2023-01-01') AS 'Teste de período inválido';
 
 SELECT
     c.nm_cliente AS 'Nome dos clientes',
-    dbo.fn_ObterNivelAtividadeCliente(c.cd_cliente, '2023-08-01', '2023-08-31') AS 'Nível de Atividade (Ago/2023)'
+    dbo.fn_ObterNivelAtividadeCliente(c.cd_cliente, '2023-08-01', '2023-08-31') AS 'Nível de atividade (Agosto de2023)'
 FROM
     Clientes c;
