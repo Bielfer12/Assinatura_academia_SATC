@@ -44,6 +44,7 @@ Table Contratos {
 
   dt_inicio date
   dt_fim date [null]
+  dt_ultima_inativacao DATE [null]
   status desc.status
 }
 enum desc.status{
