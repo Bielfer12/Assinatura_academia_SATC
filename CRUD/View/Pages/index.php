@@ -1,7 +1,4 @@
 <?php
-// Inclui o arquivo de conexão para poder buscar os dados
-
-// CÓDIGO NOVO E CORRIGIDO
 include '../../DB/conexao.php';
 
 // Query para selecionar todos os clientes, ordenados por nome
@@ -48,7 +45,6 @@ if ($stmt === false) {
                 <?php
                 // Loop para exibir cada cliente do banco na tabela
                 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                    // Formata a data para o padrão brasileiro para exibição, se necessário
                     $dt_nascimento_formatada = $row['dt_nascimento'] ? $row['dt_nascimento']->format('Y-m-d') : '';
                 ?>
                 <tr>
@@ -158,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             '</div>'
         ].join('');
         alertPlaceholder.append(wrapper);
-        // Auto-fecha o alerta após 5 segundos
         setTimeout(() => {
             wrapper.remove();
         }, 5000);
@@ -189,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA PARA SUBMETER O FORMULÁRIO (INSERIR/ATUALIZAR) ---
     clienteForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Impede o recarregamento da página
+        e.preventDefault(); 
 
         const formData = new FormData(clienteForm);
         const clientId = document.getElementById('cd_cliente').value;
@@ -198,17 +193,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const acao = clientId ? 'atualizar' : 'inserir';
         formData.append('acao', acao);
 
-        fetch('../../api_clientes.php', {
-
+        fetch('../../api_cliente.php', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                clienteModal.hide(); // Esconde o modal
+                clienteModal.hide();
                 showAlert(data.message, 'success');
-                // Recarrega a página para mostrar as alterações após 1 segundo
                 setTimeout(() => location.reload(), 1000);
             } else {
                 showAlert(data.message, 'danger');
@@ -231,8 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('acao', 'excluir');
                 formData.append('cd_cliente', id);
 
-                fetch('../../api_clientes.php', {
-
+                fetch('../../api_cliente.php', {
                     method: 'POST',
                     body: formData
                 })

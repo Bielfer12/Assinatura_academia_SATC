@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json'); // Define que a resposta será em formato JSON
+header('Content-Type: application/json'); 
 include 'DB/conexao.php';
 
 // Verifica qual ação foi solicitada via POST
@@ -10,7 +10,6 @@ $response = ['status' => 'error', 'message' => 'Ação não especificada.'];
 switch ($acao) {
     // --- AÇÃO DE INSERIR UM NOVO CLIENTE ---
     case 'inserir':
-        // Prepara a query SQL para evitar SQL Injection
         $sql = "INSERT INTO Clientes (nm_cliente, cpf, email, telefone, dt_nascimento, endereco, dt_cadastro) VALUES (?, ?, ?, ?, ?, ?, GETDATE())";
         
         $params = [
@@ -42,7 +41,7 @@ switch ($acao) {
             $_POST['telefone'],
             $_POST['dt_nascimento'],
             $_POST['endereco'],
-            $_POST['cd_cliente'] // O ID do cliente a ser atualizado
+            $_POST['cd_cliente']
         ];
 
         $stmt = sqlsrv_query($conn, $sql, $params);
@@ -63,7 +62,6 @@ switch ($acao) {
         if ($stmt) {
             $response = ['status' => 'success', 'message' => 'Cliente excluído com sucesso!'];
         } else {
-            // Verifica se o erro é de chave estrangeira (cliente em uso)
             $errors = sqlsrv_errors();
             if (isset($errors[0]['SQLSTATE']) && $errors[0]['SQLSTATE'] == "23000") {
                  $response['message'] = 'Erro: Este cliente não pode ser excluído pois está associado a contratos ou agendamentos.';
@@ -74,9 +72,7 @@ switch ($acao) {
         break;
 }
 
-// Fecha a conexão com o banco
 sqlsrv_close($conn);
 
-// Retorna a resposta em JSON para o JavaScript
 echo json_encode($response);
 ?>

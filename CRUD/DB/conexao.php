@@ -3,7 +3,7 @@
 $serverName = "localhost"; 
 
 $connectionInfo = array(
-    "Database" => "academia" 
+    "Database" => "ABP" 
 );
 
 $conn = sqlsrv_connect($serverName, $connectionInfo);
