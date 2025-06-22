@@ -22,7 +22,7 @@ SELECT TOP 5
 
     dbo.fn_ObterNivelAtividadeCliente(CTE.cd_cliente, '2024-08-01', '2024-08-31') AS 'Nível da atividade dos clientes em Agosto de 2024'
 FROM
-    ClientesComTotalPago AS CTE
+    clientescomTotalPago AS CTE
 WHERE
     CTE.status_contrato IN ('ATIVO', 'PENDENTE')
     AND
