@@ -19,7 +19,7 @@ Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.i
 ![image](https://github.com/user-attachments/assets/125fa11c-799a-4b80-8f36-a29eb5c92ce7)
 
 ### Dicionário de Dados
-As informações detalhadas sobre cada tabela, suas colunas, tipos de dados, restrições e outros metadados foram cuidadosamente documentadas na planilha [dicionario_dados_academia.xlsx][(dicionario_dados_academia.xlsx)(https://github.com/Bielfer12/Assinatura_academia_SATC/blob/main/Dicionario%20de%20dados/dicionario_dados_academia.xlsx). Este dicionário é uma ferramenta essencial para a compreensão e manutenção da estrutura do banco de dados.
+As informações detalhadas sobre cada tabela, suas colunas, tipos de dados, restrições e outros metadados foram cuidadosamente documentadas na planilha [dicionario_dados_academia.xlsx](https://github.com/Bielfer12/Assinatura_academia_SATC/blob/main/Dicionario%20de%20dados/dicionario_dados_academia.xlsx). Este dicionário é uma ferramenta essencial para a compreensão e manutenção da estrutura do banco de dados.
 
 ### Scripts SQL
 Para este projeto, foi utilizado o sistema de gerenciamento de banco de dados **SQL Server**. Abaixo, seguem os scripts SQL organizados por tipo, que permitem a criação completa do ambiente de banco de dados, incluindo sua estrutura e dados de exemplo.
