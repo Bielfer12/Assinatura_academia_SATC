@@ -22,8 +22,7 @@ Arquivo fonte: [Modelo Fisico]([https://github.com/Bielfer12/Assinatura_academia
 As informações sobre as tabelas e índices foram documentados na planilha [dicionario_dados_academia.xlsx](/dicionario_dados_academia.xlsx).
 
 ### Scripts SQL
-Para este projeto foi utilizado o banco de dados [SQL SERVER](https://azure.microsoft.com/pt-br/products/azure-sql/database) <br>
-Este é o procedimento para criação do banco de dados Azure SQL [Criando SQL Azure serverless no Azure gratuito - Sem cartão de crédito](https://github.com/jlsilva01/sql-azure-satc).
+Para este projeto foi utilizado o banco de dados [SQL SERVER]([https://azure.microsoft.com/pt-br/products/azure-sql/database](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)) <br>
 
 Abaixo, segue os scripts SQL separados por tipo:
 + [Tabelas](scripts/ddl/tabelas)
