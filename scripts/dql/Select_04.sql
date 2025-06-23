@@ -29,3 +29,17 @@ WHERE
     dbo.fn_ObterNivelAtividadeCliente(CTE.cd_cliente, '2024-08-01', '2024-08-31') IN ('Muito Ativo', 'Ativo', 'Moderado')
 ORDER BY
     CTE.dt_cadastro ASC;
+
+--indices
+
+CREATE NONCLUSTERED INDEX IDX_Contratos_ClientePlanoStatus
+ON Contratos (cd_cliente)
+INCLUDE (cd_plano, status);
+
+CREATE NONCLUSTERED INDEX IDX_Pagamentos_ContratoValor
+ON Pagamentos (cd_contrato)
+INCLUDE (valor_pago);
+
+CREATE NONCLUSTERED INDEX IDX_Clientes_ClienteNomeCadastro
+ON Clientes (cd_cliente)
+INCLUDE (nm_cliente, dt_cadastro);
