@@ -21,3 +21,20 @@ JOIN Planos pl ON ct.cd_plano = pl.cd_plano
 JOIN Clientes c ON ct.cd_cliente = c.cd_cliente
 GROUP BY pl.nm_plano, pl.tp_plano
 ORDER BY Total_Faturado DESC;
+
+--Indices:
+
+CREATE NONCLUSTERED INDEX IDX_Pagamentos_dt_pagamento
+ON Pagamentos (dt_pagamento)
+INCLUDE (cd_contrato, valor_pago, cd_pagamento);
+
+CREATE NONCLUSTERED INDEX IDX_Contratos_cd_contrato_aberto
+on Contratos (cd_contrato)
+include (cd_plano, cd_cliente);
+
+CREATE NONCLUSTERED INDEX IDX_Planos_cd_plano
+ON Planos (cd_plano)
+INCLUDE (nm_plano, tp_plano);
+
+CREATE NONCLUSTERED INDEX IDX_Clientes_cd_cliente
+ON Clientes (cd_cliente);
