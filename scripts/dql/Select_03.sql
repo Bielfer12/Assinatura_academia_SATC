@@ -21,3 +21,13 @@ GROUP BY
 ORDER BY
     "Mês da Inativação" DESC,
     "Perda de Receita Mensal" DESC;
+
+--Indices
+
+CREATE NONCLUSTERED INDEX IDX_Contratos_dt_ultima_inativacao
+ON Contratos (dt_ultima_inativacao)
+INCLUDE (cd_plano);
+
+CREATE NONCLUSTERED INDEX IDX_Planos_cd_plano_preco_tipo
+ON Planos (cd_plano)
+INCLUDE (tp_plano, vl_preco);
