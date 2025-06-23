@@ -50,3 +50,17 @@ SELECT
 FROM TaxaOcupacao
 WHERE capacidade > 0
 ORDER BY TaxaOcupacaoPercentual DESC, NomeInstrutor, nm_aula;
+
+--indices:
+
+CREATE NONCLUSTERED INDEX IDX_Agendas_AulaAluno
+ON Agendas (cd_aula)
+INCLUDE (cd_aluno);
+
+CREATE NONCLUSTERED INDEX IDX_Aulas_AulaInstrutor
+ON Aulas (cd_aula)
+INCLUDE (capacidade, nm_aula, cd_instrutor);
+
+CREATE NONCLUSTERED INDEX IDX_Funcionarios_Cargo
+ON Funcionarios (nm_cargo)
+INCLUDE (nm_funcionario, cd_funcionario);
