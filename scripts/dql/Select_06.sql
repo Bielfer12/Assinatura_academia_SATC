@@ -33,26 +33,21 @@ ORDER BY
 
 --indice na tabela Planos para acelerar o filtro por tipo de plano.
 CREATE NONCLUSTERED INDEX IDX_Planos_TipoPlano
-ON dbo.Planos (tp_plano);
+ON Planos (tp_plano);
 
 --indice na tabela contratos para otimizar os joins.
 --inclui o cd_plano para que a busca por tipo de plano seja mais rapida.
 CREATE NONCLUSTERED INDEX IDX_Contratos_Cliente_Plano
-ON dbo.Contratos (cd_cliente) 
+ON Contratos (cd_cliente) 
 INCLUDE (cd_plano);
-
---indice na tabela Agendas para cobrir o join com Contratos e Aulas.
-CREATE NONCLUSTERED INDEX IDX_Agendas_Aluno_Aula
-ON dbo.Agendas (cd_aluno) 
-INCLUDE (cd_aula);
 
 --indice na tabela Aulas para otimizar o join com Funcionarios.
 CREATE NONCLUSTERED INDEX IDX_Aulas_Instrutor
-ON dbo.Aulas (cd_instrutor)
+ON Aulas (cd_instrutor)
 INCLUDE (cd_aula);
 
 --indice na tabela funcionarios para acelerar a filtragem por cargo.
 CREATE NONCLUSTERED INDEX IDX_Funcionarios_Cargo_Nome
-ON dbo.Funcionarios (nm_cargo) 
+ON Funcionarios (nm_cargo) 
 INCLUDE (nm_funcionario);
 
