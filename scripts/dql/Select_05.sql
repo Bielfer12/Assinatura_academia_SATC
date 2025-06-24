@@ -2,56 +2,56 @@
 --recorrente que eles geram e, adicionalmente, uma lista com os 3 clientes mais leais (mais antigos) daquele plano.
 
 WITH PlanoSumario AS (
-    SELECT
-        b.cd_plano,
-        b.nm_plano,
-        b.tp_plano,
-        COUNT(a.cd_cliente) AS QtdClientesAtivos,
-        SUM(b.vl_preco) AS ReceitaMensalTotal
-    FROM
-        Contratos a 
-    INNER JOIN
-        Planos b ON a.cd_plano = b.cd_plano 
-    WHERE
-        a.status = 'ATIVO'
-    GROUP BY
-        b.cd_plano, b.nm_plano, b.tp_plano
+ SELECT
+ b.cd_plano,
+ b.nm_plano,
+ b.tp_plano,
+ COUNT(a.cd_cliente) AS QtdClientesAtivos,
+ SUM(b.vl_preco) AS ReceitaMensalTotal
+ FROM
+ Contratos a
+ INNER JOIN
+ Planos b ON a.cd_plano = b.cd_plano
+ WHERE
+ a.status = 'ATIVO'
+ GROUP BY
+ b.cd_plano, b.nm_plano, b.tp_plano
 ),
 ClientesLeaisRankeados AS (
-    SELECT
-        c.nm_cliente,
-        d.cd_plano,
-        ROW_NUMBER() OVER (PARTITION BY d.cd_plano ORDER BY c.dt_cadastro ASC) AS RankingLealdade
-    FROM
-        Clientes AS c 
-    INNER JOIN
-        Contratos AS d ON c.cd_cliente = d.cd_cliente 
-    WHERE
-        d.status = 'ATIVO'
+ SELECT
+ c.nm_cliente,
+ d.cd_plano,
+ ROW_NUMBER() OVER (PARTITION BY d.cd_plano ORDER BY c.dt_cadastro ASC) AS RankingLealdade
+ FROM
+ Clientes AS c
+ INNER JOIN
+ Contratos AS d ON c.cd_cliente = d.cd_cliente
+ WHERE
+ d.status = 'ATIVO'
 ),
-ClientesAgrupados3 AS (
-    SELECT
-        cd_plano,
-        STRING_AGG(CONCAT(RankingLealdade, '. ', nm_cliente), CHAR(13)) AS Lista3Clientes
-    FROM
-        ClientesLeaisRankeados 
-    WHERE
-        RankingLealdade <= 3
-    GROUP BY
-        cd_plano
+ClienteRanking1 AS (
+ SELECT
+ cd_plano,
+ STRING_AGG(CONCAT(RankingLealdade, '. ', nm_cliente), CHAR(13)) AS Lista3Clientes
+ FROM
+ ClientesLeaisRankeados
+ WHERE
+ RankingLealdade <= 1
+ GROUP BY
+ cd_plano
 )
 SELECT
-    f.nm_plano AS 'Nome do Plano:',
-    f.tp_plano AS 'Tipo do Plano:',
-    f.QtdClientesAtivos AS 'Qtd. de Clientes Ativos:',
-    FORMAT(f.ReceitaMensalTotal, 'C', 'pt-BR') AS 'Receita Mensal do Plano:',
-    ISNULL(g.Lista3Clientes, 'N/A') AS 'Top 3 Clientes Mais Leais:'
+ f.nm_plano AS 'Nome do Plano:',
+ f.tp_plano AS 'Tipo do Plano:',
+ f.QtdClientesAtivos AS 'Qtd. de Clientes Ativos:',
+ FORMAT(f.ReceitaMensalTotal, 'C', 'pt-BR') AS 'Receita Mensal do Plano:',
+ ISNULL(g.Lista3Clientes, 'N/A') AS 'Top Cliente Mais Leal:'
 FROM
-    PlanoSumario f 
+ PlanoSumario f
 LEFT JOIN
-    ClientesAgrupados3 g ON f.cd_plano = g.cd_plano 
+ ClienteRanking1 g ON f.cd_plano = g.cd_plano
 ORDER BY
-    f.ReceitaMensalTotal DESC;
+ f.ReceitaMensalTotal DESC;
 
 --indices:
 
