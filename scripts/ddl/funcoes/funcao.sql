@@ -71,14 +71,6 @@ BEGIN
 END;
 GO
 
-CREATE NONCLUSTERED INDEX IX_ControleAcessos_Cliente_DataEntrada
-ON Controle_Acessos (cd_cliente, dt_entrada);
-GO
-
-CREATE NONCLUSTERED INDEX IX_Contratos_Cliente_Status_Periodo
-ON Contratos (cd_cliente, status, dt_inicio, dt_fim);
-GO
-
 
 SELECT dbo.fn_ObterNivelAtividadeCliente(1, '2024-08-01', '2024-08-31') AS 'Atividade do cliente com ID 1 (Agosto de 2024)';
 
