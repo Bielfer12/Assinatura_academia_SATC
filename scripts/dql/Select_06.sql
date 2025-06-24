@@ -5,11 +5,11 @@ WITH AgendamentosVIP AS (
         a.cd_aluno,
         a.cd_aula
     FROM
-        dbo.Agendas AS a
+        Agendas AS a
     INNER JOIN
-        dbo.Contratos AS c ON a.cd_aluno = c.cd_cliente
+        Contratos AS c ON a.cd_aluno = c.cd_cliente
     INNER JOIN
-        dbo.Planos AS p ON c.cd_plano = p.cd_plano
+        Planos AS p ON c.cd_plano = p.cd_plano
     WHERE
         p.tp_plano IN ('GOLD', 'BLACK')
 )
@@ -19,9 +19,9 @@ SELECT
 FROM
     AgendamentosVIP av
 INNER JOIN
-    dbo.Aulas au ON av.cd_aula = au.cd_aula
+    Aulas au ON av.cd_aula = au.cd_aula
 INNER JOIN
-    dbo.Funcionarios f ON au.cd_instrutor = f.cd_funcionario
+    Funcionarios f ON au.cd_instrutor = f.cd_funcionario
 WHERE
     f.nm_cargo LIKE '%Instrutor%' 
 GROUP BY
