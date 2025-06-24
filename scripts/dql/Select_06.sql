@@ -1,44 +1,58 @@
---Quais instrutores são mais eficientes em preencher a capacidade das aulas que ministram?
+--Qual instrutor ministra aulas mais procuradas por alunos com plano GOLD ou BLACK?
 
-WITH OcupacaoPorAula AS (
+WITH AgendamentosVIP AS (
     SELECT
-        a.cd_aula,
-        a.cd_instrutor,
-        a.capacidade,
-        COUNT(DISTINCT b.cd_aluno) AS AlunosAgendados,
-        CASE
-            WHEN a.capacidade > 0 THEN (CAST(COUNT(DISTINCT b.cd_aluno) AS FLOAT) * 100.0 / a.capacidade)
-            ELSE 0
-        END AS TaxaOcupacaoPercentual
+        a.cd_aluno,
+        a.cd_aula
     FROM
-        Aulas AS a 
-    LEFT JOIN 
-        Agendas AS b ON a.cd_aula = b.cd_aula 
-    GROUP BY
-        a.cd_aula, a.capacidade, a.cd_instrutor
+        dbo.Agendas AS a
+    INNER JOIN
+        dbo.Contratos AS c ON a.cd_aluno = c.cd_cliente
+    INNER JOIN
+        dbo.Planos AS p ON c.cd_plano = p.cd_plano
+    WHERE
+        p.tp_plano IN ('GOLD', 'BLACK')
 )
 SELECT
-    d.nm_funcionario AS 'Nome do Instrutor',
-    COUNT(c.cd_aula) AS 'Qtd. de Aulas Diferentes Ministradas',
-    SUM(c.AlunosAgendados) AS 'Total de Alunos Agendados',
-    FORMAT(AVG(c.TaxaOcupacaoPercentual), 'N2') + '%' AS 'Taxa Média de Ocupação'
+    f.nm_funcionario AS 'Nome do Instrutor',
+    COUNT(av.cd_aluno) AS 'Qtd de Agendamentos por Alunos (GOLD e BLACK)'
 FROM
-    OcupacaoPorAula c 
+    AgendamentosVIP av
 INNER JOIN
-    Funcionarios d ON c.cd_instrutor = d.cd_funcionario 
+    dbo.Aulas au ON av.cd_aula = au.cd_aula
+INNER JOIN
+    dbo.Funcionarios f ON au.cd_instrutor = f.cd_funcionario
 WHERE
-    d.nm_cargo LIKE '%Instrutor%' 
+    f.nm_cargo LIKE '%Instrutor%' 
 GROUP BY
-    d.cd_funcionario, d.nm_funcionario
+    f.cd_funcionario, f.nm_funcionario
 ORDER BY
-    AVG(c.TaxaOcupacaoPercentual) DESC;
+    'Qtd de Agendamentos por Alunos (GOLD e BLACK)' DESC;
 
 --indices
 
-CREATE NONCLUSTERED INDEX IX_Aulas_Aula_Instrutor_Capacidade
-ON Aulas (cd_aula) 
-INCLUDE (cd_instrutor, capacidade);
+--indice na tabela Planos para acelerar o filtro por tipo de plano.
+CREATE NONCLUSTERED INDEX IDX_Planos_TipoPlano
+ON dbo.Planos (tp_plano);
 
-CREATE NONCLUSTERED INDEX IX_Funcionarios_Cargo_Nome
-ON Funcionarios (nm_cargo) 
+--indice na tabela contratos para otimizar os joins.
+--inclui o cd_plano para que a busca por tipo de plano seja mais rapida.
+CREATE NONCLUSTERED INDEX IDX_Contratos_Cliente_Plano
+ON dbo.Contratos (cd_cliente) 
+INCLUDE (cd_plano);
+
+--indice na tabela Agendas para cobrir o join com Contratos e Aulas.
+CREATE NONCLUSTERED INDEX IDX_Agendas_Aluno_Aula
+ON dbo.Agendas (cd_aluno) 
+INCLUDE (cd_aula);
+
+--indice na tabela Aulas para otimizar o join com Funcionarios.
+CREATE NONCLUSTERED INDEX IDX_Aulas_Instrutor
+ON dbo.Aulas (cd_instrutor)
+INCLUDE (cd_aula);
+
+--indice na tabela funcionarios para acelerar a filtragem por cargo.
+CREATE NONCLUSTERED INDEX IDX_Funcionarios_Cargo_Nome
+ON dbo.Funcionarios (nm_cargo) 
 INCLUDE (nm_funcionario);
+
