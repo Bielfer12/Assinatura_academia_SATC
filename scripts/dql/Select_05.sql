@@ -1,4 +1,4 @@
---Qual é o panorama completo de cada um dos nossos planos? Para cada plano, quero saber o total de clientes ativos, a receita mensal 
+--Qual Ã© o panorama completo de cada um dos nossos planos? Para cada plano, quero saber o total de clientes ativos, a receita mensal 
 --recorrente que eles geram e, adicionalmente, uma lista com os 3 clientes mais leais (mais antigos) daquele plano.
 
 WITH PlanoSumario AS (
@@ -9,7 +9,7 @@ WITH PlanoSumario AS (
         COUNT(a.cd_cliente) AS QtdClientesAtivos,
         SUM(b.vl_preco) AS ReceitaMensalTotal
     FROM
-        Contratos a -- Antigo alias: C
+        Contratos a 
     INNER JOIN
         Planos b ON a.cd_plano = b.cd_plano 
     WHERE
@@ -23,7 +23,7 @@ ClientesLeaisRankeados AS (
         d.cd_plano,
         ROW_NUMBER() OVER (PARTITION BY d.cd_plano ORDER BY c.dt_cadastro ASC) AS RankingLealdade
     FROM
-        Clientes AS c -- Antigo alias: C
+        Clientes AS c 
     INNER JOIN
         Contratos AS d ON c.cd_cliente = d.cd_cliente 
     WHERE
