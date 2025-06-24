@@ -42,8 +42,6 @@ A aplicação web foi desenvolvida para oferecer uma interface amigável para a 
 * **Tecnologias Frontend:** HTML e Bootstrap (para design responsivo e componentes visuais)
 * **Funcionalidades:** Permite realizar operações CRUD (Cadastro, Listagem, Edição e Exclusão) para entidades como Clientes e Contratos, demonstrando a conexão e manipulação de dados em tempo real.
 
-[Código Fonte da Aplicação Web](crud/)
-
 ### Passos para Execução do CRUD
 
 Para configurar e executar o projeto em seu ambiente:
