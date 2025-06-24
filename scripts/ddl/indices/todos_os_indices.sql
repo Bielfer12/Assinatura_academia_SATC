@@ -64,7 +64,7 @@ ON Planos (cd_plano)
 INCLUDE (tp_plano, vl_preco);
 
 -- gabriel
-
+--5.
 CREATE NONCLUSTERED INDEX IDX_Contratos_Status_Ativo
 ON Contratos (status)
 INCLUDE (cd_cliente, cd_plano);
@@ -77,10 +77,23 @@ CREATE NONCLUSTERED INDEX IDX_Planos
 ON Planos (cd_plano)
 INCLUDE (nm_plano, tp_plano, vl_preco);
 
-CREATE NONCLUSTERED INDEX IDX_Aulas_Aula_Instrutor_Capacidade
-ON Aulas (cd_aula) 
-INCLUDE (cd_instrutor, capacidade);
+--6.
+CREATE NONCLUSTERED INDEX IDX_Planos_TipoPlano
+ON dbo.Planos (tp_plano);
+
+CREATE NONCLUSTERED INDEX IDX_Contratos_Cliente_Plano
+ON dbo.Contratos (cd_cliente) 
+INCLUDE (cd_plano);
+
+CREATE NONCLUSTERED INDEX IDX_Agendas_Aluno_Aula
+ON dbo.Agendas (cd_aluno) 
+INCLUDE (cd_aula);
+
+CREATE NONCLUSTERED INDEX IDX_Aulas_Instrutor
+ON dbo.Aulas (cd_instrutor)
+INCLUDE (cd_aula);
 
 CREATE NONCLUSTERED INDEX IDX_Funcionarios_Cargo_Nome
-ON Funcionarios (nm_cargo) 
+ON dbo.Funcionarios (nm_cargo) 
 INCLUDE (nm_funcionario);
+
